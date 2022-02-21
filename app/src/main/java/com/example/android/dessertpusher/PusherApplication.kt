@@ -1,6 +1,8 @@
 package com.example.android.dessertpusher
 
 import android.app.Application
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ProcessLifecycleOwner
 import timber.log.Timber
 
 class PusherApplication: Application() {

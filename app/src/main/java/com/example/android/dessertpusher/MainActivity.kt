@@ -29,14 +29,13 @@ import androidx.lifecycle.LifecycleOwner
 import com.example.android.dessertpusher.databinding.ActivityMainBinding
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     private var revenue = 0
     private var dessertsSold = 0
 
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
-    private lateinit var myDessertTimer: DessertTimer
 
     /** Dessert Data **/
 
@@ -68,9 +67,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.i("onCreate Called")
+        lifecycle.addObserver(DessertTimer())
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        myDessertTimer = DessertTimer(this.lifecycle)
 
         binding.dessertButton.setOnClickListener {
             onDessertClicked()

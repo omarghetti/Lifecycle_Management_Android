@@ -20,10 +20,10 @@ import timber.log.Timber
  * https://developer.android.com/guide/components/processes-and-threads
  *
  */
-class DessertTimer(lifecycle: Lifecycle): DefaultLifecycleObserver {
+class DessertTimer(): DefaultLifecycleObserver {
 
     // The number of seconds counted since the timer started
-    var secondsCount = 0
+    private var secondsCount = 0
 
     /**
      * [Handler] is a class meant to process a queue of messages (known as [android.os.Message]s)
@@ -48,8 +48,4 @@ class DessertTimer(lifecycle: Lifecycle): DefaultLifecycleObserver {
     override fun onStop(owner: LifecycleOwner) {
         Handler(Looper.getMainLooper()).removeCallbacks(runnable)
     }
-
-    
 }
-        // Removes all pending posts of runnable from the handler's queue, effectively stopping the
-        // t
